@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+    - name: update
+      apt: update_cache=yes
+
+    - name: install nginx
+      apt: name=nginx state=latest
+
+    - name: start nginx
+      service:
+          name: nginx
+          state: started
+
+
+  handlers:
+    - name: restart nginx
+      service: name=nginx state=reloaded
