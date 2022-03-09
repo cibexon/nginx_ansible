@@ -13,6 +13,16 @@
           name: nginx
           state: started
 
+    - name: copy index file for nginx
+      copy:
+        src: /home/cibexon/ALIB_project/nginx_files/index.html
+        dest: /var/www/html
+
+    - name: update owner for index file
+      file:
+        path: /var/www/html/index.html      
+        owner: root
+        group: root
 
   handlers:
     - name: restart nginx
