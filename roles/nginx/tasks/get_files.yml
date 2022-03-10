@@ -1,4 +1,4 @@
 ---
      - name: Change owner to local
-       file: path="{{ home_dir }}"/"{{ proj_dir }}" owner=cibexon group=cibexon
+       file: {{ proj_dir }} owner=cibexon group=cibexon
           recurse: yes

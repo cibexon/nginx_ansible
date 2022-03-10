@@ -9,7 +9,7 @@
       service: name=nginx state=started
 
     - name: copy index file for nginx
-      copy: src="{{ home_dir }}"/"{{ proj_dir }}"/roles/nginx/files/index.html dest={{ nginx_web }}
+      copy: src={{ proj_dir }}/roles/nginx/files/index.html dest={{ nginx_web }}
 
     - name: update owner for index file
-      file: path="{{ nginx_web }}"/index.html owner=root group=root
+      file: path={{ nginx_web }}/index.html owner=root group=root
