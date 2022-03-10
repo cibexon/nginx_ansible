@@ -1,0 +1,6 @@
+---
+# vars file for /home/cibexon/ansible/roles/nginx
+
+home_dir: /home/cibexon
+proj_dir: ALIB_project
+nginx_web: /var/www/html
