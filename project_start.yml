@@ -1,0 +1,20 @@
+---
+
+- name: Start the main task    
+  hosts: localhost
+  become: yes
+  vars_files:
+     - /home/cibexon/ansible/vars.yml
+  tasks:
+
+     - name: Download from the GitRepo
+       git:
+          repo: git@github.com:cibexon/nginx_ansible.git
+          dest: "{{ proj_dir }}"
+          version: master
+          key_file: "{{ home_dir }}/.ssh/nginx_ansible"
+          accept_hostkey: yes
+
+     - name: Include our main role
+       include_role:
+          name: "{{ proj_dir }}/roles/nginx"
