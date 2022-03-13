@@ -3,7 +3,7 @@
 - name: Start the main task    
   hosts: localhost
   become: yes
-  user: "{{ proj_user }}"
+  user: cibexon
   become_method: sudo
   #vars_files:
   #   - /home/cibexon/ansible/vars.yml
