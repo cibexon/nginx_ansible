@@ -1,7 +1,7 @@
 ---
      - name: Change owner to local
        file: 
-         path: "{{ proj_dir }}" 
+         path: "{{ git_path }}" 
          owner: cibexon
          group: cibexon
          recurse: yes

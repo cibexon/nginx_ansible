@@ -9,14 +9,9 @@
     - name: start nginx
       service: name=nginx state=started
 
-    - name: Copy template index file
-      copy:
-        src: "{{ git_path }}/roles/nginx/templates/indexfile.j2"
-        dest: "{{ proj_dir }}/roles/nginx/templates"
-
     - name: copy index file for nginx from template
       template:
-        src: "{{ proj_dir }}/roles/nginx/templates/indexfile.j2" 
+        src: "{{ git_path }}/roles/nginx/templates/indexfile.j2" 
         dest: "{{ nginx_web }}/index.html"
 
     - name: update owner for index file
