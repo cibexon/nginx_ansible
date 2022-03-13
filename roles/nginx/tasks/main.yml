@@ -1,6 +1,14 @@
 ---
 # tasks file for /home/cibexon/ansible/roles/nginx
 
-- import_tasks: nginx_remove.yml
-- import_tasks: get_files.yml
-- import_tasks: nginx_install.yml
+- name: nginx remove
+  import_tasks: nginx_remove.yml
+  tags: nginx_rm
+
+- name: Get files
+  import_tasks: get_files.yml
+  tags: get_fs
+
+- name: Nginx install
+  import_tasks: nginx_install.yml
+  tags: nginx_install

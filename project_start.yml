@@ -6,8 +6,8 @@
   user: cibexon
   become_method: sudo
   #vars_files:
-  #   - /home/cibexon/ansible/vars.yml
-  tasks:
+  #   - /home/cibexon//vars.yml
+  #tasks:
 
           #     - name: Download from the GitRepo
           #git:
@@ -21,4 +21,4 @@
           #include_role:
           #name: "{{ proj_dir }}/roles/nginx"
   roles:
-     - role: "{{ proj_dir }}/roles/nginx"
+     - nginx
