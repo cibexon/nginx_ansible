@@ -8,10 +8,10 @@
     - name: start nginx
       service: name=nginx state=started
 
-    - name: copy index file for nginx
-      copy: 
-        src: "{{ proj_dir }}/roles/nginx/files/index.html" 
-        dest: "{{ nginx_web }}"
+    - name: copy index file for nginx from template
+      template:
+        src: "{{ proj_dir }}/roles/nginx/templates/indexfile.j2" 
+        dest: "{{ nginx_web }}/index.html"
 
     - name: update owner for index file
       file:
