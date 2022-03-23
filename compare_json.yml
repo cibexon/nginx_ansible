@@ -1,0 +1,36 @@
+---
+
+- name: Preparations
+  hosts: localhost
+  become: yes
+  user: cibexon
+  become_method: sudo
+  tasks:
+          
+          - name: Create necessary files
+            file: 
+             path: "{{ item }}"
+             state: touch
+             owner: cibexon
+             group: cibexon
+            loop:
+             - root_component.json
+             - params.json
+
+          - name: Download root components
+            get_url:
+               url: http://localhost/root_components/
+               dest: root_component.json
+
+          - name: Download params
+            get_url:
+               url: http://localhost/params/
+               dest: params.json
+
+          - name: Compare files contant
+            shell: "git diff --no-index root_component.json params.json > output.txt | exit 0 && cat output.txt"
+            register: execut
+          
+          - debug:
+               var: execut['stdout']
+                  #msg: "{{ info.results | json_query('[].stdout_lines[]') }}" 
